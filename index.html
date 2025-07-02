@@ -25,17 +25,20 @@
             </div>
             <nav id="nav">
                 <ul>
-                    <li><a href="#inicio" class="nav-link" onclick="seleccionar()">INICIO</a></li>
-                    <li><a href="#sobremi" class="nav-link" onclick="seleccionar()">SOBRE MI</a></li>
-                    <li><a href="#skills" class="nav-link" onclick="seleccionar()">SKILLS</a></li>
-                    <li><a href="#curriculum" class="nav-link" onclick="seleccionar()">CURRICULUM</a></li>
-                    <li><a href="#portfolio" class="nav-link" onclick="seleccionar()">PORTFOLIO</a></li>
-                    <li><a href="#contacto" class="nav-link" onclick="seleccionar()">CONTACTO</a></li>
+                    <li><a href="#inicio" class="nav-link" onclick="seleccionar()" data-i18n="inicio">INICIO</a></li>
+                    <li><a href="#sobremi" class="nav-link" onclick="seleccionar()" data-i18n="sobremi">SOBRE MI</a></li>
+                    <li><a href="#skills" class="nav-link" onclick="seleccionar()" data-i18n="skills">SKILLS</a></li>
+                    <li><a href="#curriculum" class="nav-link" onclick="seleccionar()" data-i18n="curriculum">CURRICULUM</a></li>
+                    <li><a href="#portfolio" class="nav-link" onclick="seleccionar()" data-i18n="portfolio">PORTFOLIO</a></li>
+                    <li><a href="#contacto" class="nav-link" onclick="seleccionar()" data-i18n="contacto">CONTACTO</a></li>
                 </ul>
             </nav>
             <!--Falta seguir desarrollando para cambiar el color de tema // fas fa-moon -->
             <div class="theme-toggle">
                 <i class="" id="theme-icon"></i>
+            </div>
+            <div class="language-toggle">
+                <button id="btn-language" aria-label="Cambiar idioma">EN</button>
             </div>
             <div class="nav-responsive" onclick="mostrarOcultarMenu()">
                 <i class="fa-solid fa-bars"></i>
@@ -53,7 +56,7 @@
             <h1 class="typed-effect">DIEGO MENDIA</h1>
             <h2 class="profession">
                 <span class="txt-rotate" data-period="2000"
-                    data-rotate='[ "Desarrollador Web", "Full Stack Developer", "Java Developer", "Tech Enthusiast" ]'></span>
+                    data-rotate='[ "Web Developer", "Full Stack Developer", "Java Developer", "Tech Enthusiast" ]'></span>
             </h2>
             <div class="redes">
                 <a href="https://www.linkedin.com/in/diego-mendia-2909a4243/" target="_blank"
@@ -71,9 +74,9 @@
     <!-- SECCION SOBRE MI -->
     <section id="sobremi" class="sobremi">
         <div class="contenido-seccion">
-            <h2 class="section-title">Sobre Mí</h2>
+            <h2 class="section-title" data-i18n="sobremi" >Sobre Mí</h2>
             <div class="section-divider"></div>
-            <p class="intro-text"><span>Hola, soy Diego German Mendia,</span> desarrollador Web Full Stack Junior con
+            <p class="intro-text" data-i18n="presentacion" ><span >Hola, soy Diego German Mendia,</span> desarrollador Web Full Stack Junior con
                 conocimientos sólidos en tecnologías backend (PHP/Laravel y Java/Spring) y experiencia práctica en
                 aplicaciones web. Implemento arquitecturas MVC y APIs RESTful con enfoque en optimización y seguridad.
                 Autodidacta con fuerte capacidad analítica, me destaco por mi resolución de problemas y comunicación
@@ -82,34 +85,34 @@
             <div class="fila">
                 <!-- datos personales -->
                 <div class="col">
-                    <h3 class="subsection-title">Datos Personales</h3>
+                    <h3 class="subsection-title" data-i18n="datospersonales">Datos Personales</h3>
                     <ul class="info-list">
                         <li>
-                            <strong>Nacimiento</strong>
+                            <strong data-i18n="nacimiento">Nacimiento</strong>
                             21-01-1992
                         </li>
                         <li>
-                            <strong>Teléfono</strong>
+                            <strong data-i18n="telefono">Teléfono</strong>
                             +54 9 388 4375632
                         </li>
                         <li>
-                            <strong>Dirección</strong>
+                            <strong data-i18n="ubicacion">Dirección</strong>
                             Córdoba, Argentina
                         </li>
                         <li>
-                            <strong>Idiomas</strong>
-                            Ingles Avanzado
+                            <strong data-i18n="idioma">Idiomas</strong>
+                            <p data-i18n="b2">Ingles B2</p>
                         </li>
                     </ul>
                 </div>
 
                 <!-- intereses -->
                 <div class="col">
-                    <h3 class="subsection-title">Intereses</h3>
+                    <h3 class="subsection-title" data-i18n="intereses">Intereses</h3>
                     <div class="contenedor-intereses">
                         <div class="interes">
                             <i class="fa-solid fa-computer"></i>
-                            <span>TECNOLOGÍA</span>
+                            <span data-i18n="tecnologia">TECNOLOGÍA</span>
                         </div>
                         <div class="interes">
                             <i class="fa-solid fa-mobile-screen"></i>
@@ -117,32 +120,32 @@
                         </div>
                         <div class="interes">
                             <i class="fa-solid fa-headphones"></i>
-                            <span>MÚSICA</span>
+                            <span data-i18n="musica">MÚSICA</span>
                         </div>
                         <div class="interes">
                             <i class="fa-solid fa-plane"></i>
-                            <span>VIAJAR</span>
+                            <span data-i18n="viajar" >VIAJAR</span>
                         </div>
                         <div class="interes">
                             <i class="fa-solid fa-gamepad"></i>
-                            <span>JUEGOS</span>
+                            <span data-i18n="juegos">JUEGOS</span>
                         </div>
                         <div class="interes">
                             <i class="fa-solid fa-book"></i>
-                            <span>LIBROS</span>
+                            <span data-i18n="libros">LIBROS</span>
                         </div>
                         <div class="interes">
                             <i class="fa-solid fa-car"></i>
-                            <span>AUTOS</span>
+                            <span data-i18n="autos">AUTOS</span>
                         </div>
                         <div class="interes">
                             <i class="fa-solid fa-person-hiking"></i>
-                            <span>DEPORTE</span>
+                            <span data-i18n="deporte">DEPORTE</span>
                         </div>
                     </div>
                 </div>
             </div>
-            <a href="/DiegoMendia_DesarrolladorWeb_CV.docx" class="btn-download" download>
+            <a href="/DiegoMendia_DesarrolladorWeb_CV.pdf" class="btn-download" download data-i18n="descarga">
                 Descargar CV <i class="fa-solid fa-download"></i>
                 <span class="overlay"></span>
             </a>
@@ -152,12 +155,12 @@
     <!-- SECCION SKILLS -->
     <section class="skills" id="skills">
         <div class="contenido-seccion">
-            <h2 class="section-title">Skills</h2>
+            <h2 class="section-title" data-i18n="skills">Habilidades</h2>
             <div class="section-divider"></div>
             <div class="fila">
                 <!-- Technical Skill -->
                 <div class="col technical-skill">
-                    <h3 class="subsection-title">Technical Skills</h3>
+                    <h3 class="subsection-title"data-i18n="tech_skill">Technical Skills</h3>
                     <div class="contenedor-skills">
                         <div class="skill" data-tech="HTML5">
                             <i class="fab fa-html5"></i>
@@ -208,9 +211,9 @@
                 </div>
                 <!-- Professional Skills -->
                 <div class="col professional-skills">
-                    <h3 class="subsection-title">Professional Skills</h3>
+                    <h3 class="subsection-title" data-i18n="prof_skill">Professional Skills</h3>
                     <div class="skill">
-                        <span>Autodidacta</span>
+                        <span data-i18n="autodidacta" >Autodidacta</span>
                         <div class="barra-skill">
                             <div class="progreso" data-progress="95">
                                 <span>95%</span>
@@ -218,7 +221,7 @@
                         </div>
                     </div>
                     <div class="skill">
-                        <span>Comunicación</span>
+                        <span data-i18n="comunicacion" >Comunicación</span>
                         <div class="barra-skill">
                             <div class="progreso" data-progress="100">
                                 <span>100%</span>
@@ -226,7 +229,7 @@
                         </div>
                     </div>
                     <div class="skill">
-                        <span>Trabajo en Equipo</span>
+                        <span data-i18n="trabajoequipo">Trabajo en Equipo</span>
                         <div class="barra-skill">
                             <div class="progreso" data-progress="100">
                                 <span>100%</span>
@@ -234,7 +237,7 @@
                         </div>
                     </div>
                     <div class="skill">
-                        <span>Creatividad</span>
+                        <span data-i18n="creatividad" >Creatividad</span>
                         <div class="barra-skill">
                             <div class="progreso" data-progress="75">
                                 <span>75%</span>
@@ -242,7 +245,7 @@
                         </div>
                     </div>
                     <div class="skill">
-                        <span>Dedicación</span>
+                        <span data-i18n="dedicacion" >Dedicación</span>
                         <div class="barra-skill">
                             <div class="progreso" data-progress="100">
                                 <span>100%</span>
@@ -250,7 +253,7 @@
                         </div>
                     </div>
                     <div class="skill">
-                        <span>Tolerancia a la Frustración</span>
+                        <span data-i18n="frustracion">Tolerancia a la Frustración</span>
                         <div class="barra-skill">
                             <div class="progreso" data-progress="90">
                                 <span>90%</span>
@@ -265,22 +268,22 @@
     <!-- SECCION CURRICULUM -->
     <section id="curriculum" class="curriculum">
         <div class="contenido-seccion">
-            <h2 class="section-title">Curriculum</h2>
+            <h2 class="section-title">CURRICULUM</h2>
             <div class="section-divider"></div>
             <div class="timeline-controls">
-                <button class="timeline-btn active" data-filter="all">Todo</button>
-                <button class="timeline-btn" data-filter="education">Educación</button>
-                <button class="timeline-btn" data-filter="experience">Experiencia</button>
+                <button class="timeline-btn active" data-filter="all" data-i18n="todo">Todo</button>
+                <button class="timeline-btn" data-filter="education" data-i18n="educacion">Educación</button>
+                <button class="timeline-btn" data-filter="experience" data-i18n="experiencia">Experiencia</button>
             </div>
             <div class="fila timeline-container">
                 <div class="col izquierda timeline-block education">
-                    <h3 class="timeline-header">Educación</h3>
+                    <h3 class="timeline-header"data-i18n="educacion" >Educación</h3>
                     <div class="item izq">
                         <span class="timeline-icon"><i class="fas fa-graduation-cap"></i></span>
-                        <h4>Tecnico Desarrollador de Software</h4>
+                        <h4 data-i18n="tecnico">Tecnico Desarrollador de Software</h4>
                         <span class="casa">Instituto Superior Politecnico Córdoba</span>
                         <span class="fecha">2025</span>
-                        <p>• Formación integral en desarrollo de soluciones tecnológicas orientadas a procesos
+                        <p data-i18n="formacion">• Formación integral en desarrollo de soluciones tecnológicas orientadas a procesos
                             empresariales, con enfoque en arquitectura web, calidad de software y escalabilidad.<br>
                             • Capacitado en todas las etapas del ciclo de vida del software: análisis, diseño,
                             programación orientada a objetos, testing, implementación y soporte técnico.<br>
@@ -303,7 +306,7 @@
                         <h4>Backend Web Developer Java </h4>
                         <span class="casa">Alura Latam & Oracle </span>
                         <span class="fecha">2024 - 2025</span>
-                        <p>•	Especialización en tecnologías backend y experiencia de usuario con Spring Boot<br>
+                        <p data-i18n="alura">•	Especialización en tecnologías backend y experiencia de usuario con Spring Boot<br>
                             •	Enfoque en accesibilidad web y rendimiento backend<br>
                             •	Java SE Programming y programación orientada a objetos
                             
@@ -314,10 +317,10 @@
                     </div>
                     <div class="item izq">
                         <span class="timeline-icon"><i class="fas fa-code"></i></span>
-                        <h4>Desarrollador Full Stack</h4>
+                        <h4>Developer Full Stack</h4>
                         <span class="casa">Egg Cooperation</span>
                         <span class="fecha">2022 - 2024</span>
-                        <p>• 525 horas de formación especializada en Full Stack Developer con GIT - HTML/CSS -
+                        <p data-i18n="egg">• 525 horas de formación especializada en Full Stack Developer con GIT - HTML/CSS -
                             JAVASCRIPT - FRAMEWORKS Y PREPROCESADORES - REACT - FIGMA - JAVA - MYSQL - JDBC - JPA -
                             SPRING <br>
                             • Proyecto destacado: Plataforma de comercio
@@ -328,10 +331,10 @@
                     </div>
                     <div class="item izq">
                         <span class="timeline-icon"><i class="fas fa-university"></i></span>
-                        <h4>Ingenieria en Computación</h4>
-                        <span class="casa">Universidad de Córdoba </span>
+                        <h4 data-i18n="ingenieria">Ingenieria en Computación</h4>
+                        <span class="casa" data-i18n="universidad" >Universidad de Córdoba </span>
                         <span class="fecha">2016- 2017</span>
-                        <p>• Fundamentos de algoritmos, estructuras de datos y matemática discreta <br>
+                        <p data-i18n="texto0">• Fundamentos de algoritmos, estructuras de datos y matemática discreta <br>
                             • Base sólida en resolución de problemas computacionales
                         </p>
                         <div class="conectori">
@@ -341,20 +344,20 @@
                 </div>
 
                 <div class="col derecha timeline-block experience">
-                    <h3 class="timeline-header">Experiencia de trabajo</h3>
+                    <h3 class="timeline-header" data-i18n="experiencia">Experiencia de trabajo</h3>
                     <div class="item der">
                         <span class="timeline-icon"><i class="fas fa-laptop-code"></i></span>
                         <h4>L2Princess (Gaming)</h4>
                         <span class="casa">Freelancer</span>
                         <span class="fecha">2023</span>
-                        <p>• Rediseño completo de plataforma de servicios web con PHP/Laravel para un servidor de juego
+                        <p data-i18n="texto1">• Rediseño completo de plataforma de servicios web con PHP/Laravel para un servidor de juego
                             online con +1500 usuarios activos<br>
                             • Implementación de sistema de caché que redujo los tiempos de consulta en un 65%<br>
                             • Desarrollo de API RESTful permitiendo la comunicación con aplicaciones móviles, aumentando
                             el engagement en un 40%<br>
                             • Diseño e implementación de sistema de autenticación con protección contra ataques de
                             fuerza bruta<br>
-                            • • Interacción optimizada: Mejoré significativamente la comunicación entre la página web y
+                            • Interacción optimizada: Mejoré significativamente la comunicación entre la página web y
                             el servidor del juego, lo que resultó en una experiencia de usuario más fluida y
                             eficiente.<br>
                             • Tecnologías: PHP 8, Laravel 10, MariaDB, RESTful API, JavaScript, AJAX, JSON
@@ -365,10 +368,10 @@
                     </div>
                     <div class="item der">
                         <span class="timeline-icon"><i class="fas fa-project-diagram"></i></span>
-                        <h4>Biblioteca EGG </h4>
+                        <h4 data-i18n="biblioteca">Biblioteca EGG </h4>
                         <span class="casa">EGG</span>
                         <span class="fecha">2023</span>
-                        <p>• Desarrollo full stack de sistema de gestión de biblioteca procesando +5000 registros
+                        <p data-i18n="texto2">• Desarrollo full stack de sistema de gestión de biblioteca procesando +5000 registros
                             bibliográficos<br>
                             • Implementación de Spring Security con JWT para autenticación y roles de usuario
                             (administrador, bibliotecario, usuario)<br>
@@ -385,10 +388,10 @@
                     </div>
                         <div class="item der">
                             <span class="timeline-icon"><i class="fas fa-project-diagram"></i></span>
-                            <h4>Sistema de Gestión de Alquileres (Colaborativo)</h4>
+                            <h4 data-i18n="alquiler">Sistema de Gestión de Alquileres (Colaborativo)</h4>
                             <span class="casa">EGG</span>
                             <span class="fecha">2024</span>
-                            <p>• Desarrollo full stack de una aplicación web dinámica para la gestión de propiedades en
+                            <p data-i18n="texto3">• Desarrollo full stack de una aplicación web dinámica para la gestión de propiedades en
                                 alquiler, permitiendo la interacción de tres tipos de usuarios: Inquilino, Propietario y
                                 Administrador<br>
                                 • Diseño e implementación de la arquitectura backend con Spring Boot, gestionando lógica
@@ -416,10 +419,10 @@
             <h2 class="section-title">PORTAFOLIO</h2>
             <div class="section-divider"></div>
             <div class="portfolio-filter">
-                <button class="filter-btn active" data-filter="all">Todos</button>
-                <button class="filter-btn" data-filter="web">Web</button>
+                <button class="filter-btn active" data-filter="all" data-i18n="todo">Todos</button>
+                <button class="filter-btn" data-filter="web" >Web</button>
                 <button class="filter-btn" data-filter="app">Apps</button>
-                <button class="filter-btn" data-filter="juego">Juegos</button>
+                <button class="filter-btn" data-filter="juego"data-i18n="juego">Juegos</button>
             </div>
             <div class="galeria">
                 <div class="proyecto" data-category="juego">
@@ -493,9 +496,9 @@
     </section>
 
     <!-- SECCION CONTACTO -->
-    <section id="contacto" class="contacto">
+     <section id="contacto" class="contacto">
         <div class="contenido-seccion">
-            <h2 class="section-title">CONTACTO</h2>
+            <h2 class="section-title" data-i18n="contacto">CONTACTO</h2>
             <div class="section-divider"></div>
             <div class="contact-info">
                 <div class="contact-card">
@@ -505,48 +508,46 @@
                 </div>
                 <div class="contact-card">
                     <i class="fas fa-phone"></i>
-                    <h3>Teléfono</h3>
+                    <h3 data-i18n="telefono" data-i18n="telefono">Teléfono</h3>
                     <p>+54 9 388 4375632</p>
                 </div>
                 <div class="contact-card">
                     <i class="fas fa-map-marker-alt"></i>
-                    <h3>Ubicación</h3>
+                    <h3 data-i18n="ubicacion" data-i18n="ubicacion">Ubicación</h3>
                     <p>Córdoba, Argentina</p>
                 </div>
             </div>
             <form id="contactForm" class="contact-form">
                 <div class="form-header">
-                    <h3>Envíame un mensaje</h3>
-                    <p>Me pondré en contacto contigo lo antes posible</p>
+                    <h3 data-i18n="form_header">Envíame un mensaje</h3>
+                    <p data-i18n="form_subtext">Me pondré en contacto contigo lo antes posible</p>
                 </div>
                 <div class="fila">
                     <div class="col">
                         <div class="input-group">
-                            <input type="text" name="name" placeholder="Nombre" id="name" required>
+                            <input type="text" name="name" placeholder="Name" id="name" required>
                             <span class="input-focus-effect"></span>
                         </div>
                         <div class="input-group">
-                            <input type="email" name="email" placeholder="Dirección de correo" id="email" required>
+                            <input type="email" name="email" placeholder="Email" id="email" required>
                             <span class="input-focus-effect"></span>
                         </div>
                         <div class="input-group">
-                            <input type="text" name="subject" placeholder="Asunto" id="subject" required>
+                            <input type="text" name="subject" placeholder="Subject" id="subject" required>
                             <span class="input-focus-effect"></span>
                         </div>
                         <div class="input-group">
-                            <textarea name="body" id="body" cols="30" rows="10" placeholder="Tu mensaje..."
-                                required></textarea>
+                            <textarea name="body" id="body" cols="30" rows="10" placeholder="Message...."  required></textarea>
                             <span class="input-focus-effect"></span>
                         </div>
                         <button type="submit" id="btnSend" class="btn-send">
-                            Enviar Mensaje <i class="fa-solid fa-paper-plane"></i>
+                            <span data-i18n="enviar_mensaje">Enviar Mensaje</span>
+                            <i class="fa-solid fa-paper-plane"></i>
                             <span class="overlay"></span>
                         </button>
                     </div>
                 </div>
             </form>
-
-            <!-- Contenedor para los mensajes -->
             <div id="mensaje-container" class="mensaje-container"></div>
         </div>
     </section>
@@ -559,33 +560,29 @@
         <div class="footer-content">
             <div class="footer-about">
                 <h3>Diego Mendia</h3>
-                <p>Desarrollador Web apasionado por crear soluciones digitales innovadoras y funcionales.</p>
+                <p data-i18n="footer_desc">Desarrollador Web apasionado por crear soluciones digitales innovadoras y funcionales.</p>
             </div>
             <div class="footer-links">
-                <h3>Enlaces Rápidos</h3>
+                <h3 data-i18n="enlaces">Enlaces Rápidos</h3>
                 <ul>
-                    <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#sobremi">Sobre Mí</a></li>
-                    <li><a href="#portfolio">Portafolio</a></li>
-                    <li><a href="#contacto">Contacto</a></li>
+                    <li><a href="#inicio" data-i18n="inicio">Inicio</a></li>
+                    <li><a href="#sobremi" data-i18n="sobremi">Sobre Mí</a></li>
+                    <li><a href="#portfolio" data-i18n="portfolio">Portafolio</a></li>
+                    <li><a href="#contacto" data-i18n="contacto">Contacto</a></li>
                 </ul>
             </div>
             <div class="footer-social">
-                <h3>Sígueme</h3>
+                <h3 data-i18n="sigueme">Sígueme</h3>
                 <div class="redes">
-                    <a href="https://www.linkedin.com/in/diego-mendia-2909a4243/" target="_blank"
-                        rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
-                    <a href="https://github.com/DiegoMendia" target="_blank" rel="noopener noreferrer"><i
-                            class="fa-brands fa-github"></i></a>
-                    <a href="https://x.com/DiegoMendia2" target="_blank" rel="noopener noreferrer"><i
-                            class="fa-brands fa-twitter"></i></a>
-                    <a href="https://www.instagram.com/diego.mendia/" target="_blank" rel="noopener noreferrer"><i
-                            class="fa-brands fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/diego-mendia-2909a4243/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="https://github.com/DiegoMendia" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-github"></i></a>
+                    <a href="https://x.com/DiegoMendia2" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="https://www.instagram.com/diego.mendia/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
                 </div>
             </div>
         </div>
         <div class="copyright">
-            <h4>DM © Todos los derechos reservados - 2025</h4>
+            <h4>DM © <span data-i18n="derechos">Todos los derechos reservados - 2025</span></h4>
         </div>
     </footer>
 
@@ -596,7 +593,7 @@
     <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
     <script>
         (function () {
-            emailjs.init("4MPN96F_QEHwXHkNZ"); // Reemplaza con tu Public Key
+            emailjs.init("4MPN96F_QEHwXHkNZ");
         })();
     </script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>

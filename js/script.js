@@ -1,6 +1,8 @@
 // Variables globales
 let menuVisible = false;
 let darkMode = localStorage.getItem('darkMode') === 'true';
+if (darkMode) {}
+
 
 // DOM Ready - Inicializar todas las funcionalidades cuando el DOM esté cargado
 document.addEventListener('DOMContentLoaded', function() {
@@ -570,3 +572,36 @@ document.addEventListener('click', function(e) {
         }
     }
 });
+
+let currentLang = localStorage.getItem('lang') || 'es';
+const langBtn = document.getElementById('btn-language');
+let translations = {};
+
+document.addEventListener('DOMContentLoaded', () => {
+    fetch('lang.json')
+        .then(res => res.json())
+        .then(data => {
+            translations = data;
+            applyTranslations();
+        });
+
+    if (langBtn) {
+        langBtn.addEventListener('click', () => {
+            currentLang = currentLang === 'es' ? 'en' : 'es';
+            localStorage.setItem('lang', currentLang);
+            applyTranslations();
+        });
+    }
+});
+
+function applyTranslations() {
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+        const key = el.getAttribute('data-i18n');
+        if (translations[currentLang][key]) {
+            el.innerHTML = translations[currentLang][key];
+        }
+    });
+
+    // Actualiza el texto del botón de idioma
+    if (langBtn) langBtn.textContent = currentLang === 'es' ? 'EN' : 'ES';
+}
