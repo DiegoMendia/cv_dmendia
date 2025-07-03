@@ -1,50 +1,52 @@
 // Variables globales
 let menuVisible = false;
 let darkMode = localStorage.getItem('darkMode') === 'true';
-if (darkMode) {}
+if (darkMode) { }
 
 
 // DOM Ready - Inicializar todas las funcionalidades cuando el DOM esté cargado
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     // Inicializar tema
     initTheme();
-    
+
     // Inicializar animaciones
     initAnimations();
-    
+
     // Inicializar efectos de texto
     initTextEffects();
-    
+
     // Inicializar filtros de portfolio
     initPortfolioFilters();
-    
+
     // Inicializar timeline
     initTimelineFilters();
-    
+
     // Inicializar particles.js si existe el elemento
     if (document.getElementById('particles-js')) {
         initParticles();
     }
-    
+
     // Inicializar formulario de contacto
     initContactForm();
-    
+
     // Inicializar smooth scroll
     initSmoothScroll();
-    
+
     // Inicializa cerrar modal
-    document.addEventListener('click', function(e) {
+    document.addEventListener('click', function (e) {
         if (e.target.classList.contains('cerrar-mensaje')) {
             cerrarModal();
         }
     });
 });
 
+
+
 // Función para manejar el menú en dispositivos móviles
 function mostrarOcultarMenu() {
     const nav = document.getElementById("nav");
     menuVisible = !menuVisible;
-    
+
     if (menuVisible) {
         nav.classList.add("responsive");
         // Desactivar scroll cuando el menú está abierto
@@ -64,23 +66,64 @@ function seleccionar() {
     document.body.style.overflow = '';
 }
 
+// Cerrar menú al hacer clic fuera de él
+document.addEventListener('click', function (event) {
+    const nav = document.getElementById("nav");
+    const navResponsive = document.querySelector(".nav-responsive");
+
+    if (menuVisible && !nav.contains(event.target) && !navResponsive.contains(event.target)) {
+        seleccionar();
+    }
+});
+
+// Cerrar menú al redimensionar la ventana
+window.addEventListener('resize', function () {
+    if (window.innerWidth > 650 && menuVisible) {
+        seleccionar();
+    }
+});
+
+// Header scroll effect
+window.addEventListener('scroll', function () {
+    const header = document.querySelector('.contenedor-header');
+    if (window.scrollY > 50) {
+        header.classList.add('scrolled');
+    } else {
+        header.classList.remove('scrolled');
+    }
+});
+
+// Smooth scroll para los enlaces
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+
 // Inicializar tema oscuro/claro
 function initTheme() {
     const themeToggle = document.querySelector('.theme-toggle');
     const themeIcon = document.getElementById('theme-icon');
-    
+
     // Aplicar tema guardado
     if (darkMode) {
         document.body.classList.add('dark-mode');
         themeIcon.classList.remove('fa-moon');
         themeIcon.classList.add('fa-sun');
     }
-    
+
     // Manejar cambio de tema
-    themeToggle.addEventListener('click', function() {
+    themeToggle.addEventListener('click', function () {
         document.body.classList.toggle('dark-mode');
         darkMode = !darkMode;
-        
+
         // Actualizar icono
         if (darkMode) {
             themeIcon.classList.remove('fa-moon');
@@ -89,7 +132,7 @@ function initTheme() {
             themeIcon.classList.remove('fa-sun');
             themeIcon.classList.add('fa-moon');
         }
-        
+
         // Guardar preferencia
         localStorage.setItem('darkMode', darkMode);
     });
@@ -100,15 +143,15 @@ function initTheme() {
 function initAnimations() {
     // Configurar GSAP ScrollTrigger
     gsap.registerPlugin(ScrollTrigger);
-    
+
     // Animar secciones al hacer scroll
     const sections = document.querySelectorAll('section');
     sections.forEach(section => {
-        gsap.fromTo(section.querySelector('.section-title'), 
+        gsap.fromTo(section.querySelector('.section-title'),
             { opacity: 0, y: 50 },
-            { 
-                opacity: 1, 
-                y: 0, 
+            {
+                opacity: 1,
+                y: 0,
                 duration: 1,
                 scrollTrigger: {
                     trigger: section,
@@ -118,17 +161,17 @@ function initAnimations() {
             }
         );
     });
-    
 
-    
+
+
     // Animación de habilidades técnicas
     const techSkills = document.querySelectorAll('.technical-skill .skill');
     techSkills.forEach(skill => {
         gsap.fromTo(skill,
             { opacity: 0, x: -50 },
-            { 
-                opacity: 1, 
-                x: 0, 
+            {
+                opacity: 1,
+                x: 0,
                 duration: 0.5,
                 scrollTrigger: {
                     trigger: '.technical-skill',
@@ -138,9 +181,9 @@ function initAnimations() {
             }
         );
     });
-    
+
     // Detectar scroll para aplicar efectos en habilidades profesionales
-    window.addEventListener('scroll', function() {
+    window.addEventListener('scroll', function () {
         efectoHabilidades();
     });
 }
@@ -149,19 +192,19 @@ function initAnimations() {
 function efectoHabilidades() {
     const skills = document.getElementById("skills");
     if (!skills) return;
-    
+
     const distancia_skills = window.innerHeight - skills.getBoundingClientRect().top;
-    
+
     if (distancia_skills >= 300) {
         // Para habilidades profesionales (con clase progreso)
         const habilidadesPro = document.querySelectorAll(".barra-skill .progreso");
-        
+
         habilidadesPro.forEach((habilidad, index) => {
             setTimeout(() => {
                 const porcentaje = habilidad.getAttribute("data-progress") + "%";
                 habilidad.style.width = porcentaje;
                 habilidad.classList.add("animada");
-                
+
                 // Hacer visible y animar el span del porcentaje
                 const spanPorcentaje = habilidad.querySelector("span");
                 if (spanPorcentaje) {
@@ -169,10 +212,10 @@ function efectoHabilidades() {
                 }
             }, index * 200);
         });
-        
+
         // Para habilidades técnicas (con clase skill-level)
         const habilidadesTech = document.querySelectorAll(".skill .skill-level");
-        
+
         habilidadesTech.forEach((habilidad, index) => {
             setTimeout(() => {
                 const porcentaje = habilidad.textContent;
@@ -191,7 +234,7 @@ window.addEventListener("load", efectoHabilidades);
 // Inicializar efectos de texto animado
 function initTextEffects() {
     // Efecto de typing para la profesión
-    const TxtRotate = function(el, toRotate, period) {
+    const TxtRotate = function (el, toRotate, period) {
         this.toRotate = toRotate;
         this.el = el;
         this.loopNum = 0;
@@ -200,24 +243,24 @@ function initTextEffects() {
         this.tick();
         this.isDeleting = false;
     };
-    
-    TxtRotate.prototype.tick = function() {
+
+    TxtRotate.prototype.tick = function () {
         const i = this.loopNum % this.toRotate.length;
         const fullTxt = this.toRotate[i];
-        
+
         if (this.isDeleting) {
             this.txt = fullTxt.substring(0, this.txt.length - 1);
         } else {
             this.txt = fullTxt.substring(0, this.txt.length + 1);
         }
-        
-        this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
-        
+
+        this.el.innerHTML = '<span class="wrap">' + this.txt + '</span>';
+
         const that = this;
         let delta = 200 - Math.random() * 100;
-        
+
         if (this.isDeleting) { delta /= 2; }
-        
+
         if (!this.isDeleting && this.txt === fullTxt) {
             delta = this.period;
             this.isDeleting = true;
@@ -226,26 +269,26 @@ function initTextEffects() {
             this.loopNum++;
             delta = 500;
         }
-        
-        setTimeout(function() {
+
+        setTimeout(function () {
             that.tick();
         }, delta);
     };
-    
+
     // Iniciar todos los elementos con efecto de typing
     const elements = document.getElementsByClassName('txt-rotate');
-    for (let i=0; i<elements.length; i++) {
+    for (let i = 0; i < elements.length; i++) {
         const toRotate = elements[i].getAttribute('data-rotate');
         const period = elements[i].getAttribute('data-period');
         if (toRotate) {
             new TxtRotate(elements[i], JSON.parse(toRotate), period);
         }
     }
-    
+
     // Efecto glitch para logo
     const glitchEffect = document.querySelector('.glitch-effect');
     if (glitchEffect) {
-        glitchEffect.addEventListener('mouseover', function() {
+        glitchEffect.addEventListener('mouseover', function () {
             this.classList.add('active');
             setTimeout(() => {
                 this.classList.remove('active');
@@ -258,16 +301,16 @@ function initTextEffects() {
 function initPortfolioFilters() {
     const filterBtns = document.querySelectorAll('.filter-btn');
     const proyectos = document.querySelectorAll('.proyecto');
-    
+
     filterBtns.forEach(btn => {
-        btn.addEventListener('click', function() {
+        btn.addEventListener('click', function () {
             // Quitar clase activa de todos los botones
             filterBtns.forEach(b => b.classList.remove('active'));
             // Añadir clase activa al botón clickeado
             this.classList.add('active');
-            
+
             const filterValue = this.getAttribute('data-filter');
-            
+
             // Filtrar proyectos
             proyectos.forEach(proyecto => {
                 if (filterValue === 'all' || proyecto.getAttribute('data-category') === filterValue) {
@@ -284,16 +327,16 @@ function initPortfolioFilters() {
 function initTimelineFilters() {
     const timelineButtons = document.querySelectorAll('.timeline-btn');
     const timelineBlocks = document.querySelectorAll('.timeline-block');
-    
+
     timelineButtons.forEach(btn => {
-        btn.addEventListener('click', function() {
+        btn.addEventListener('click', function () {
             // Quitar clase activa de todos los botones
             timelineButtons.forEach(b => b.classList.remove('active'));
             // Añadir clase activa al botón clickeado
             this.classList.add('active');
-            
+
             const filterValue = this.getAttribute('data-filter');
-            
+
             // Filtrar timeline
             timelineBlocks.forEach(block => {
                 if (filterValue === 'all' || block.classList.contains(filterValue)) {
@@ -419,47 +462,47 @@ function initParticles() {
 function initContactForm() {
     const contactForm = document.getElementById("contactForm");
     if (!contactForm) return;
-    
-    contactForm.addEventListener("submit", function(event) {
+
+    contactForm.addEventListener("submit", function (event) {
         event.preventDefault();
-        
+
         // Deshabilitar botón de envío para prevenir múltiples envíos
         const btnSend = document.getElementById("btnSend");
         btnSend.disabled = true;
         btnSend.innerHTML = 'Enviando... <i class="fas fa-spinner fa-spin"></i>';
-        
+
         // Obtener valores del formulario
         const name = document.getElementById("name").value.trim();
         const email = document.getElementById("email").value.trim();
         const subject = document.getElementById("subject").value.trim();
         const message = document.getElementById("body").value.trim();
-        
+
         // Validar todos los campos
         if (name === "" || email === "" || subject === "" || message === "") {
             mostrarMensajeError("Todos los campos son obligatorios. Por favor, complétalos antes de enviar.");
             resetSubmitButton(btnSend);
             return;
         }
-        
+
         // Validar formato de email
         if (!validateEmail(email)) {
             mostrarMensajeError("Por favor ingresa un correo electrónico válido.");
             resetSubmitButton(btnSend);
             return;
         }
-        
+
         // Parámetros del formulario para EmailJS
         const templateParams = { name, email, subject, message };
-        
+
         // Enviar el correo usando EmailJS
         emailjs.send("service_4c7iwjg", "template_2j1g0ll", templateParams, "4MPN96F_QEHwXHkNZ")
-            .then(function(response) {
+            .then(function (response) {
                 console.log("Correo enviado con éxito", response);
                 mostrarMensajeExito();
                 contactForm.reset(); // Limpia el formulario tras envío exitoso
                 resetSubmitButton(btnSend);
             })
-            .catch(function(error) {
+            .catch(function (error) {
                 console.error("Error al enviar el correo", error);
                 mostrarMensajeError("Hubo un problema al enviar tu mensaje. Por favor, intenta de nuevo más tarde.");
                 resetSubmitButton(btnSend);
@@ -496,18 +539,18 @@ function mostrarMensajeExito() {
             </div>
         </div>
     `;
-    
+
     // Mostrar el modal con animación
     setTimeout(() => {
         mensajeContainer.className = "mensaje-container mensaje-success active";
     }, 10);
-    
+
     // Agregar evento de clic al botón cerrar que acabamos de crear
     const cerrarBtn = mensajeContainer.querySelector('.cerrar-mensaje');
     if (cerrarBtn) {
         cerrarBtn.addEventListener('click', cerrarModal);
     }
-    
+
     // Auto cerrar después de 5 segundos
     setTimeout(cerrarModal, 5000);
 }
@@ -529,12 +572,12 @@ function mostrarMensajeError(mensaje) {
             </div>
         </div>
     `;
-    
+
     // Mostrar el modal con animación
     setTimeout(() => {
         mensajeContainer.className = "mensaje-container mensaje-error active";
     }, 10);
-    
+
     // Agregar evento de clic al botón cerrar que acabamos de crear
     const cerrarBtn = mensajeContainer.querySelector('.cerrar-mensaje');
     if (cerrarBtn) {
@@ -547,7 +590,7 @@ function cerrarModal() {
     const mensajeContainer = document.getElementById("mensaje-container");
     if (mensajeContainer) {
         mensajeContainer.classList.remove("active");
-        
+
         // Esperar a que termine la animación antes de limpiar el contenido
         setTimeout(() => {
             if (mensajeContainer) {
@@ -559,12 +602,12 @@ function cerrarModal() {
 }
 
 // Opcional: Cerrar el modal al hacer clic fuera del mensaje
-document.addEventListener('click', function(e) {
+document.addEventListener('click', function (e) {
     const mensajeContainer = document.getElementById("mensaje-container");
     if (!mensajeContainer) return;
-    
+
     const mensajeModal = document.querySelector(".mensaje-modal");
-    
+
     if (mensajeContainer.classList.contains("active")) {
         // Si el clic fue en el contenedor (fondo oscuro) pero no en el modal
         if (e.target === mensajeContainer && (!mensajeModal || !mensajeModal.contains(e.target))) {

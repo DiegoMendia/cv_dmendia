@@ -23,25 +23,30 @@
             <div class="logo animate__animated animate__fadeIn">
                 <a href="#" class="glitch-effect">DM</a>
             </div>
-            <nav id="nav">
-                <ul>
-                    <li><a href="#inicio" class="nav-link" onclick="seleccionar()" data-i18n="inicio">INICIO</a></li>
-                    <li><a href="#sobremi" class="nav-link" onclick="seleccionar()" data-i18n="sobremi">SOBRE MI</a></li>
-                    <li><a href="#skills" class="nav-link" onclick="seleccionar()" data-i18n="skills">SKILLS</a></li>
-                    <li><a href="#curriculum" class="nav-link" onclick="seleccionar()" data-i18n="curriculum">CURRICULUM</a></li>
-                    <li><a href="#portfolio" class="nav-link" onclick="seleccionar()" data-i18n="portfolio">PORTFOLIO</a></li>
-                    <li><a href="#contacto" class="nav-link" onclick="seleccionar()" data-i18n="contacto">CONTACTO</a></li>
-                </ul>
-            </nav>
-            <!--Falta seguir desarrollando para cambiar el color de tema // fas fa-moon -->
-            <div class="theme-toggle">
-                <i class="" id="theme-icon"></i>
-            </div>
-            <div class="language-toggle">
-                <button id="btn-language" aria-label="Cambiar idioma">EN</button>
-            </div>
-            <div class="nav-responsive" onclick="mostrarOcultarMenu()">
-                <i class="fa-solid fa-bars"></i>
+            
+            <div class="header-right">
+                <nav id="nav">
+                    <ul>
+                        <li><a href="#inicio" class="nav-link" onclick="seleccionar()" data-i18n="inicio">INICIO</a></li>
+                        <li><a href="#sobremi" class="nav-link" onclick="seleccionar()" data-i18n="sobremi">SOBRE MI</a></li>
+                        <li><a href="#skills" class="nav-link" onclick="seleccionar()" data-i18n="skills">SKILLS</a></li>
+                        <li><a href="#curriculum" class="nav-link" onclick="seleccionar()" data-i18n="curriculum">CURRICULUM</a></li>
+                        <li><a href="#portfolio" class="nav-link" onclick="seleccionar()" data-i18n="portfolio">PORTFOLIO</a></li>
+                        <li><a href="#contacto" class="nav-link" onclick="seleccionar()" data-i18n="contacto">CONTACTO</a></li>
+                    </ul>
+                </nav>
+                
+                <div class="theme-toggle">
+                    <i id="theme-icon"></i><!--class="fas fa-moon" falta agregar y configurar-->
+                </div>
+                
+                <div class="language-toggle">
+                    <button id="btn-language" aria-label="Cambiar idioma">EN</button>
+                </div>
+                
+                <div class="nav-responsive" onclick="mostrarOcultarMenu()">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
             </div>
         </header>
     </div>
